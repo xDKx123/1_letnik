@@ -1,0 +1,80 @@
+#pragma once
+
+#include <fstream>
+#include <string>
+
+class BinWriter
+{
+private:
+	std::ofstream input;
+	char byte = 0;	//shranimo 1 byte
+	int counter = 0;	//stevec bitov
+
+public:
+	BinWriter(std::string path);
+	~BinWriter();
+
+	char getByte();
+	int getCounter();
+
+	void writeBit(bool b);
+	void writeByte(char c);
+	void writeInt(int i);
+	void writeFloat(float f);
+	void writeShort(short s);
+};
+
+BinWriter::BinWriter(std::string path)
+{
+	input.open(path, std::ios::binary);
+}
+
+BinWriter::~BinWriter()
+{
+	if (counter > 0) {
+		//byte = 0;
+		input.write(&byte, 1);
+	}
+	input.close();
+}
+
+char BinWriter::getByte()
+{
+	return byte;
+}
+
+int BinWriter::getCounter()
+{
+	return counter;
+}
+
+void BinWriter::writeBit(bool b)
+{
+	if (counter == 8) {
+		input.write(&byte, 1);
+		counter = 0;
+		byte = 0;
+	}
+	byte ^= (-b ^ byte) & (1 << counter);
+	counter++;
+}
+
+void BinWriter::writeByte(char c)
+{
+	input.write((char*)&c, 1);
+}
+
+void BinWriter::writeInt(int i)
+{
+	input.write((char*)&i, 4);
+}
+
+void BinWriter::writeFloat(float f)
+{
+	input.write((char*)&f, 4);
+}
+
+void BinWriter::writeShort(short s)
+{
+	input.write((char*)&s, 2);
+}

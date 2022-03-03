@@ -1,0 +1,14 @@
+.colorCell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+#messagesList {
+    height: 100%;
+    border: 1px solid black;
+}
+
+.marginBottom15 {
+    margin-bottom: 15px;
+}

@@ -1,0 +1,39 @@
+//Komentarji
+
+//že to da je narejen v wpf je slabo, ker deluje samo na windows platformi.
+//development samo na windows platformi
+//boljše uporabljati UWP, saj omogoča bridge za ios in android
+
+//namespace name?
+
+
+Checklist.cs
+poimenovanja => taskList namesto taskList;
+tipi => taskList ma Job? spremeni v Task
+
+addTask doda job? spremeni v task
+
+
+
+Job.cs
+nekatere spremenljivke so v slovenščini, nekatere v angleščini
+imena funkcij z malo začetnico?
+
+konstruktor kliče funkcije za set?
+
+MainWindow.xaml.cs
+
+nared folder ki ima mock podatke shranjene npr v csv, jih prebere in initializa projekt
+spet seznam1, uporabljaj konsistentna poimenovanja
+spet mešanje angleščine in slovenščine
+
+
+TaskControl.xaml
+ponovno mešanje angleščine in slovenščine
+
+//magari nared si fajle s prevodi pa jemlji tiste
+
+
+TaskControl.xaml.cs
+//zkaj jName in ne jobName?
+//zkaj isdone namesto isDone

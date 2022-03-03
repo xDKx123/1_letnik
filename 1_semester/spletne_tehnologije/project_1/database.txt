@@ -1,0 +1,30 @@
+--create schema vaja_1
+
+
+create table vaja_1.todo_lists (
+	id int4 NOT NULL GENERATED ALWAYS AS identity (START WITH 1 INCREMENT BY 1 CYCLE CACHE 200),
+	"name" varchar not null,
+	created_at date NOT NULL,
+	updated_at date NULL,
+	CONSTRAINT todo_lists_pkey PRIMARY KEY (id),
+);
+
+create table vaja_1.tags(
+	id int4 NOT NULL GENERATED ALWAYS AS identity (START WITH 1 INCREMENT BY 1 CYCLE CACHE 200),
+	"name" varchar not null,
+	created_at date NOT NULL,
+	updated_at date NULL,
+	CONSTRAINT tags_pkey PRIMARY KEY (id),
+	fk_todo_lists_item int4 NOT NULL,
+	constraint fk_todo_lists_item foreign key (fk_todo_lists_item) references vaja_1.todo_lists_items(id),
+);
+
+create table vaja_1.todo_lists_items(
+	id int4 NOT NULL GENERATED ALWAYS AS identity (START WITH 1 INCREMENT BY 1 CYCLE CACHE 200),
+	"name" varchar not null,
+	created_at date NOT NULL,
+	updated_at date NULL,
+	fk_todo_list int4 not null,
+	CONSTRAINT todo_lists_items_pkey PRIMARY KEY (id),
+	constraint fk_todo_list foreign key (fk_todo_list) references vaja_1.todo_lists(id),
+);
